@@ -10,7 +10,7 @@
     var DOWN = 1;
     var RIGHT = 2;
     var LEFT = 3;
-    
+    var cssDefined = false;
     
     // Direction holder. Default RIGHT
     var DIRECTION = RIGHT;
@@ -32,7 +32,7 @@
             tailColor: "#1BE03F",
             backgroundColor: "#000000",
             targetColor: "#FC000D",
-			borderColor: "#000000"
+            borderColor: "#000000"
         },
         onGameOver: function(){
             alert("You lost!");
@@ -43,7 +43,7 @@
     
     $.fn.snakey = function(method){
         self = this;
-        initCss();
+        
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         }
@@ -58,23 +58,35 @@
     };
     
     var initCss = function(){
-        var css = ".grid {display: table; border-color:"+ defaults.style.borderColor +"}" +
+        var css = ".grid {display: table; border-color:" + defaults.style.borderColor + "; border-style: solid;}" +
         ".row {	display: table-row;}" +
-        ". cell {display: table-cell; width: " + 
-        defaults.dimensions.horizontal +
+        ".cell {display: table-cell; width: " +
+        defaults.pointSize +
         "px; height: " +
-        defaults.dimensions.vertical +
+        defaults.pointSize +
         "px;}" +
         ".rudiment {background-color: " +
         defaults.style.tailColor +
         ";}" +
-        ".first { background-color: "+ defaults.style.headColor +";}"
-        ".target {background-color: red;}";
-		$("<style type='text/css'>" + css + "</style>").appendTo("head");
+        ".first { background-color: " +
+        defaults.style.headColor +
+        ";}" +
+        ".target {background-color: "+ defaults.style.targetColor +";}";
+        $("<style type='text/css'>" + css + "</style>").appendTo("head");
     };
     var methods = {
         init: function(options){
             //Clear everything
+            
+            if (options) {
+                $.extend(defaults, options);
+            }
+            
+            if (!cssDefined) {
+                initCss();
+                cssDefined = true;
+            }
+            
             $(self).html('');
             //Build the grid
             
