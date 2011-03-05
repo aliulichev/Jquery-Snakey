@@ -1,5 +1,6 @@
 /**
- * @author anton
+ * Anton Liulichev 
+ * JQuery Snakey plug-in
  */
 (function($){
 
