@@ -26,4 +26,4 @@ Options:
                         alert("Game Over!");
                     }
                 });
-                $("#snakey").snakey('start');
+ $("#snakey").snakey('start');
