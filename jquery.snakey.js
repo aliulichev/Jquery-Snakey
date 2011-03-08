@@ -202,7 +202,8 @@
     
     
     $(window).keydown(function(event){
-        if (event.keyCode == 40) {
+        //Down
+		if (event.keyCode == 40) {
             if ($(".rudiment").size() == 0) {
                 DIRECTION = DOWN;
                 return false;
