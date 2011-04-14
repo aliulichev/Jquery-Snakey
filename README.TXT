@@ -7,7 +7,7 @@ How to use:
 
 Simple usage (Default settings):
 
- $("#snakey").snakey('start'); - Creates and start the game.
+ $("#snakey").snakey('start'); - Creates and starts the game.
 
 Options:
 
